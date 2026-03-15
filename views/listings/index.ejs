@@ -1,0 +1,124 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container"> 
+    <div id="filters">
+    <a href="/listings" class="filter">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+    </a>
+    <a href="/listings?category=Rooms" class="filter">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+    </a>
+    <a href="/listings?category=Iconic Cities" class="filter">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Iconic Cities</p>
+    </a>
+    <a href="/listings?category=Mountains" class="filter">
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountains</p>
+    </a>
+    <a href="/listings?category=Castles" class="filter">
+        <div><i class="fa-solid fa-fort-awesome"></i></div>
+        <p>Castles</p>
+    </a>
+    <a href="/listings?category=Amazing Pools" class="filter">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Amazing Pools</p>
+    </a>
+    <a href="/listings?category=Camping" class="filter">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Camping</p>
+    </a>
+    <a href="/listings?category=Farms" class="filter">
+        <div><i class="fa-solid fa-cow"></i></div>
+        <p>Farms</p>
+    </a>
+    <a href="/listings?category=Arctic" class="filter">
+        <div><i class="fa-solid fa-snowflake"></i></div>
+        <p>Arctic</p>
+    </a>
+
+    
+        <div class="tax-toggle">
+            <div class="form-check-reverse form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+        <% for(let listing of allListing) { %>
+    <a href="/listings/<%= listing._id %>" class="listing-link">
+        <div class="card col shadow-card">
+            <div class="card-img-container">
+                <div class="wishlist-icon">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+                <% 
+                       let displayUrl = "https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=1000&auto=format&fit=crop"; 
+                       if (listing.image && typeof listing.image === 'object' && listing.image.url) {
+                           displayUrl = listing.image.url;
+                       } else if (typeof listing.image === 'string') {
+                           displayUrl = listing.image;
+                       } 
+                    %>
+                
+                <img src="<%= displayUrl %>" class="card-img-top" alt="listing_image" style="height: 20rem;"/>
+                <div class="card-img-overlay"></div> 
+            </div>
+
+            <div class="card-body">
+                <p class="card-text">
+                    <b class="card-title"><%= listing.title %></b> <br>
+                    <span class="text-muted"><%= listing.location %>, <%= listing.country %></span> <br>
+                    <% if (listing.price && listing.price !== null) { %>
+        <span class="fw-bold">&#8377; <%= listing.price.toLocaleString("en-IN") %></span>
+    <% } else { %>
+        <span class="text-muted">Price not available</span>
+    <% } %>
+    <span class="text-muted">night</span>
+
+    
+                    <i class="tax-info"> &nbsp; +18% GST</i>
+                </p>
+            </div>
+        </div>
+    </a>
+<% } %>
+    </div>
+</div>
+
+<script>
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+  taxSwitch.addEventListener("change", () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+    for (let info of taxInfo) {
+      if (info.style.display !== "inline") {
+        info.style.display = "inline";
+      } else {
+        info.style.display = "none";
+      }
+    }
+  });
+</script>
+
+<script>
+  // Wait for the entire window to load (including CDNs in boilerplate)
+  window.addEventListener('load', function() {
+    if (typeof flatpickr !== 'undefined') {
+      flatpickr("#datepicker", {
+        mode: "range",
+        minDate: "today",
+        dateFormat: "d M",
+        showMonths: 2,
+        // This ensures the calendar doesn't get cut off by navbar overflow
+        static: false, 
+        monthSelectorType: "static"
+      });
+    } else {
+      console.error("Flatpickr library not loaded! Check your boilerplate.ejs links.");
+    }
+  });
+</script>

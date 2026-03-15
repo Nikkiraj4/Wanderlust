@@ -1,0 +1,113 @@
+<nav class="navbar navbar-expand-md bg-white border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand ms-3" href="/listings">
+      <i class="fa-brands fa-airbnb" style="color: #fe424d; font-size: 2.2rem;"></i>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      
+      <div class="navbar-nav ms-auto">
+        <form class="d-flex" role="search" action="/listings" method="GET">
+          <div class="search-container shadow-sm border rounded-pill d-flex align-items-center px-3 py-1 bg-white">
+            
+            <input type="text" name="search" placeholder="Anywhere" 
+                   class="form-control border-0 fw-bold shadow-none" 
+                   style="font-size: 0.85rem; width: 120px; background: transparent;">
+
+            <div class="vr mx-2" style="height: 20px;"></div>
+
+            <div class="calendar-wrapper">
+              <input type="text" id="datepicker" name="dateRange" placeholder="Any week" 
+                     class="form-control border-0 fw-bold shadow-none" 
+                     style="font-size: 0.85rem; background: transparent; width: 100px; cursor: pointer;" 
+                     readonly>
+            </div>
+
+            <div class="vr mx-2" style="height: 20px;"></div>
+<div class="dropdown">
+    <button class="btn border-0 text-muted p-0 dropdown-toggle-split" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.85rem; width: 80px;">
+        <span id="guest-count-label">Add guests</span>
+    </button>
+    
+    <div class="dropdown-menu dropdown-menu-end shadow border-0 p-4 mt-3" style="border-radius: 2rem; min-width: 300px;">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <p class="mb-0 fw-bold">Adults</p>
+                <p class="text-muted mb-0" style="font-size: 0.8rem;">Ages 13 or above</p>
+            </div>
+            <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-sm btn-outline-secondary rounded-circle control-btn" onclick="updateGuests('adults', -1)">-</button>
+                <span class="mx-3 fw-bold" id="adults-count">0</span>
+                <button type="button" class="btn btn-sm btn-outline-secondary rounded-circle control-btn" onclick="updateGuests('adults', 1)">+</button>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <p class="mb-0 fw-bold">Children</p>
+                <p class="text-muted mb-0" style="font-size: 0.8rem;">Ages 2–12</p>
+            </div>
+            <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-sm btn-outline-secondary rounded-circle control-btn" onclick="updateGuests('children', -1)">-</button>
+                <span class="mx-3 fw-bold" id="children-count">0</span>
+                <button type="button" class="btn btn-sm btn-outline-secondary rounded-circle control-btn" onclick="updateGuests('children', 1)">+</button>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <p class="mb-0 fw-bold">Pets</p>
+                <p class="text-muted mb-0" style="font-size: 0.8rem;">Bringing a service animal?</p>
+            </div>
+            <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-sm btn-outline-secondary rounded-circle control-btn" onclick="updateGuests('pets', -1)">-</button>
+                <span class="mx-3 fw-bold" id="pets-count">0</span>
+                <button type="button" class="btn btn-sm btn-outline-secondary rounded-circle control-btn" onclick="updateGuests('pets', 1)">+</button>
+            </div>
+        </div>
+        
+        <input type="hidden" name="guests" id="guests-input" value="">
+    </div>
+</div>
+            
+            <button class="btn btn-danger rounded-circle ms-2 p-2 d-flex align-items-center justify-content-center" 
+                    type="submit"
+                    style="width: 32px; height: 32px; background-color: #fe424d; border: none;">
+              <i class="fa-solid fa-magnifying-glass fa-xs" style="color: white;"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="navbar-nav ms-auto me-3 align-items-center">
+        <a class="nav-link fw-semibold d-none d-md-block" href="/listings/new">Airbnb your home</a>
+        <a class="nav-link px-3" href="/listings"><i class="fa-solid fa-globe"></i></a>
+        
+        <div class="dropdown">
+            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-bars fa-lg text-dark"></i>
+            </a>
+            
+            <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-3" style="border-radius: 1rem; min-width: 200px;">
+                <% if(!currUser) { %>
+                    <li><a class="dropdown-item fw-bold" href="/signup">Sign up</a></li>
+                    <li><a class="dropdown-item" href="/login">Log in</a></li>
+                <% } else { %>
+                    <li><a class="dropdown-item fw-bold" href="/logout">Log out</a></li>
+                <% } %>
+
+                <li><hr class="dropdown-divider"></li>
+                
+                <li><a class="dropdown-item" href="/">Airbnb your home</a></li>
+                <li><a class="dropdown-item" href="#">Help Center</a></li>
+            </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</nav>

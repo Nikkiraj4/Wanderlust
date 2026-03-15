@@ -1,0 +1,370 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.container {
+  flex: 1;
+}
+
+/* Navbar */
+.navbar {
+  height: 5rem;
+  background-color: white;
+}
+
+.fa-compass {
+  color: #fe424d !important;
+  font-size: 2rem;
+}
+
+.nav-link {
+  color: #222222 !important;
+}
+
+/* Color updates for Social Icons */
+.f-info-socials i {
+  margin-right: 1.5rem; /* Increased spacing slightly */
+  font-size: 1.25rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Specific Brands */
+/* Center the entire footer content */
+.f-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    text-align: center;
+    padding: 2rem 0;
+    background-color: #ebebeb;
+}
+
+/* Social Icons Styling */
+.f-info-socials {
+    display: flex;
+    gap: 1.5rem; /* Better spacing between icons */
+    margin-bottom: 1rem;
+    font-size: 1.5rem; /* Makes them slightly larger and easier to see */
+}
+.f-info-socials a i {
+    font-size: 1.5rem;
+    margin: 0 0.8rem;
+    text-decoration: none !important;
+}
+
+.f-info-socials i {
+    transition: transform 0.2s ease;
+}
+
+/* Brand Colors */
+.fa-facebook {
+    color: #1877F2 !important;
+}
+
+.fa-linkedin {
+    color: #0A66C2 !important;
+}
+
+/* Instagram Gradient Fix */
+.fa-instagram {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285ae1 90%);
+    background-clip: text; /* Standard property */
+    -webkit-background-clip: text; /* Safari/Chrome property */
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback */
+    display: inline-block;
+}
+
+.f-info-socials i:hover {
+    transform: scale(1.2);
+}
+
+/* Cards */
+.card {
+  border: none !important;
+  margin-bottom: 2rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.card-img-top {
+  border-radius: 1rem !important;
+  width: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.3s ease; /* Smooth zoom on hover */
+}
+
+/* Container for the image to prevent zoom overflow */
+.card-img-container {
+  overflow: hidden;
+  border-radius: 1rem;
+  position: relative;
+}
+
+.shadow-card:hover .card-img-top {
+  transform: scale(1.05); /* Slight zoom in effect */
+}
+
+.card-body {
+  padding: 0.5rem 0 !important; /* Tiny bit of breathing room above text */
+}
+
+/* Ensure long titles don't wrap awkwardly */
+.card-title {
+  font-weight: 600 !important;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  color: #222222;
+}
+
+.card-text {
+  font-weight: 400 !important;
+  color: #222222;
+  font-size: 0.9rem;
+}
+
+.listing-link {
+  text-decoration: none;
+}
+
+/* Airbnb-style Heart Icon */
+.wishlist-icon {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 5;
+    color: rgba(0, 0, 0, 0.5); /* Subtle border color */
+    font-size: 1.3rem;
+    transition: all 0.2s ease;
+}
+
+.wishlist-icon i {
+    -webkit-text-stroke: 1px white; /* Gives the thin outline look */
+}
+
+.wishlist-icon:hover {
+    transform: scale(1.1);
+    color: #ff385c; /* Airbnb brand pink/red */
+}
+
+
+/* Buttons */
+.add-btn, .edit-btn {
+  background-color: #fe424d !important;
+  border: none !important;
+}
+
+/* Show Page */
+.show-image {
+  height: 30vh;
+}
+
+.btns {
+  display: flex;
+}
+
+.show-card {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* ========================================== */
+/* NEW: Star Rating CSS (Starability-Basic)   */
+/* ========================================== */
+/* Cleaned up Starability-Basic CSS */
+.starability-basic {
+  display: block;
+  position: relative;
+  width: 100%; /* Better for mobile responsiveness */
+  min-height: 40px;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Hide the radio buttons and text labels while keeping them accessible */
+.starability-basic > input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+.starability-basic > label {
+  float: right;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  color: #e1e1e1; /* Grey for empty stars */
+  cursor: pointer;
+  text-indent: -9999px; /* This hides the "1 star", "2 star" text */
+}
+
+.starability-basic > label:before {
+  content: '★';
+  float: left;
+  text-indent: 0;
+}
+
+/* Color stars yellow when checked or hovered */
+.starability-basic > input:checked ~ label,
+.starability-basic > label:hover,
+.starability-basic > label:hover ~ label {
+  color: #ffc700;
+}
+
+/* This makes the stars look like the screenshot */
+.starability-result {
+    transform: scale(0.8); /* Makes them slightly smaller */
+    transform-origin: left;
+    margin-left: -10px; /* Adjusts alignment */
+}
+
+/* If the stars are still not appearing, this "forces" the color to black */
+.starability-result::before {
+    color: black !important;
+}
+
+.review-card {
+    border-bottom: 1px solid #ebebeb !important; /* Single line boundary */
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.edit-preview-img {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* Filters Container */
+/* 1. Main Container Logic */
+#filters {
+    display: flex;
+    flex-wrap: nowrap; /* Forces icons to stay on one line */
+    align-items: center;
+    overflow-x: auto; /* Enables horizontal scroll */
+    white-space: nowrap;
+    padding: 1rem 0; /* Vertical padding for the border-bottom hover effect */
+}
+
+/* 2. Hide Scrollbars (Keeps it clean) */
+#filters::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+#filters {
+    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* 3. Individual Filter Styling */
+.filter {
+    text-align: center;
+    margin-right: 2.5rem; /* Space between icons */
+    flex: 0 0 auto; /* Crucial: Prevents icons from shrinking to fit the screen */
+    opacity: 0.7;
+    transition: 0.2s ease-in-out;
+    text-decoration: none;
+    color: #222222 !important;
+}
+
+.filter:hover {
+    opacity: 1;
+    cursor: pointer;
+    border-bottom: 2px solid black;
+}
+
+/* 4. Icon and Text Size */
+.filter i {
+    font-size: 1.2rem;
+}
+
+.filter p {
+    font-size: 0.75rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0; /* Prevents unwanted spacing */
+}
+
+/* 5. Force text color for links specifically */
+#filters a {
+    text-decoration: none;
+    color: #222222 !important;
+}
+.tax-toggle {
+    border: 1px solid #b2b2b2;
+    border-radius: 12px;
+    height: 3.25rem;
+    padding: 1rem;
+    margin-left: auto; /* Pushes it to the right */
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+/* Navbar Custom Styling */
+.navbar {
+    height: 5rem;
+}
+
+.search-container {
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.search-container:hover {
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1) !important;
+}
+
+.nav-link {
+    color: #222222 !important;
+    font-size: 0.9rem;
+}
+
+/* Removes the default Bootstrap arrow */
+.dropdown-toggle::after, .nav-link.dropdown-toggle::after {
+    display: none !important;
+}
+
+/* Makes the hamburger icon feel like a button on hover */
+.dropdown a.nav-link:hover {
+    color: #fe424d !important; /* Airbnb red on hover */
+    cursor: pointer;
+}
+
+/* Ensure the dropdown menu looks premium */
+.dropdown-menu {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+#datepicker {
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+#datepicker::placeholder {
+    color: black;
+    opacity: 1;
+}
+
+/* Customizing the Flatpickr box to look more like the screenshot */
+.flatpickr-calendar {
+    border-radius: 20px !important;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.15) !important;
+    border: none !important;
+    margin-top: 15px;
+}
+
+.flatpickr-day.selected {
+    background: #fe424d !important; /* Airbnb Red */
+    border-color: #fe424d !important;
+}

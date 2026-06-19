@@ -2,10 +2,10 @@
 **A Full-Stack Travel Listing & Booking Platform**
 
 ![Node.js](https://img.shields.io/badge/Node.js-v25.5.0-339933?logo=node.js&logoColor=white)
-![Express](https://img.shields.io/badge/Express-5.x-000000?logo=express&logoColor=white)
+![Express](https://img.shields.io/badge/Express-5.x-3448C5?logo=express&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?logo=mongodb&logoColor=white)
 ![Cloudinary](https://img.shields.io/badge/Cloudinary-Image_Storage-3448C5?logo=cloudinary&logoColor=white)
-![License: ISC](https://img.shields.io/badge/License-ISC-blue)
+
 
 [Live Demo →](https://wanderlust-ykfc.onrender.com)  |  [API Routes →](#api-routes)  |  [Architecture →](#technical-architecture)  |  [Local Setup →](#local-development)
 
